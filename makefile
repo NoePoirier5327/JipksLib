@@ -1,11 +1,12 @@
 CXX = g++
 AR = ar
 ARFLAGS = rcs
-DEFAULT_LDFLAGS = 
-LDFLAGS = -lmatrix
+LDDIR = -Llib
+DEFAULT_LDFLAGS = -lmatrix
+LDFLAGS = 
 DEFAULT_CXXFLAGS = -std=c++17 -pedantic -Wfatal-errors -Wconversion -Wredundant-decls -Wshadow -Wall -Wextra
 CXXFLAGS = 
-INCLUDE_DIR = 
+INCLUDE_DIR = -Iinclude
 BINFLAGS =
 
 CXXLIB = lib/libjipks.a
@@ -31,7 +32,7 @@ all: $(APP)
 
 $(APP): $(OBJ_WITHOUT_LUA)
 	@mkdir -p bin
-	$(CXX) -o $(APP) $^ $(BINFLAGS) $(CXXFLAGS) $(LDFLAGS)
+	$(CXX) $(LDDIR) -o $(APP) $^ $(BINFLAGS) $(CXXFLAGS) $(LDFLAGS)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 	@mkdir -p $(dir $@)
@@ -48,7 +49,7 @@ $(CXXLIB): $(OBJ_CXX_LIB)
 
 $(LUALIB): $(OBJ_LUA_LIB)
 	@mkdir -p lua
-	$(CXX) -o $@ $^ $(LDFLAGS)
+	$(CXX) $(LDDIR) -o $@ $^ $(LDFLAGS)
 
 run: 
 	$(APP)
