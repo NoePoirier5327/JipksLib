@@ -41,9 +41,9 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 # Compilation du binaire en tant que librairie.
 $(CXXLIB): $(OBJ_CXX_LIB)
 	@mkdir -p lib
-	@rm -rR include
-	@mkdir -p include
-	cp -rR $(SRCDIR)/matrix/ include
+	@rm -rR include/jipks
+	@mkdir -p include/jipks
+	cp -rR $(SRCDIR)/jipks/ include
 	find include -type f -name "*.cpp" -delete
 	$(AR) $(ARFLAGS) $@ $^
 
