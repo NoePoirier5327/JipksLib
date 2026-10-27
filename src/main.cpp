@@ -1,33 +1,14 @@
 #include <matrix/matrix.hpp>
-#include <cmath>
-
-Matrix f(const Matrix &m) {
-  Matrix result = Matrix(m.get_nb_line(), m.get_nb_col());
-
-  for (size_t i = 1; i <= m.get_nb_line(); ++i)
-    for (size_t j = 1; j <= m.get_nb_col(); ++j)
-      result(i, j) = 1 / (1 + exp(-1 * m(i, j)));
-
-  return result;
-}
+#include "jipks/jipks.hpp"
+#include <iostream>
 
 int main() {
-  Matrix W = Matrix(2, 2);
-  Matrix X = Matrix(2, 1);
-  Matrix B = Matrix(2, 1);
+  jipks::mlp::MLP mlp = jipks::mlp::MLP({2, 3, 3, 2, 1});
 
-  W(1, 1) = 0.9;
-  W(1, 2) = 0.79;
-  W(2, 1) = 0.4;
-  W(2, 2) = 0.26;
-
-  X(1, 1) = 0;
-  X(2, 1) = 1;
-
-  B(1, 1) = 0.21;
-  B(2, 1) = 0.4;
-
-  f(W * X + B).display();
+  std::vector<double> outputs = mlp.feed_forward({1, 0});
+  for (size_t i = 0; i < outputs.size(); ++i)
+    std::cout << outputs[i] << " ";
+  std::cout << std::endl;
 
   return 0;
 }
