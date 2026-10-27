@@ -43,15 +43,13 @@ namespace jipks::mlp {
        * la fonction de normalisation des sorties.
        *
        * @param inputs, entrées X de la couche servant à la prédiction.
-       * @param weights, poids entre la couche d'entrées et celle courante.
-       *
        * @return prédiction de la couche courante.
        *
-       * @throw std::invalid_argument si weights.get_nb_line() != _biases.get_nb_line()
-       * @throw std::invalid_argument si weights.get_nb_col() != inputs.get_nb_line()
+       * @throw std::invalid_argument si _weights.get_nb_line() != _biases.get_nb_line()
+       * @throw std::invalid_argument si _weights.get_nb_col() != inputs.get_nb_line()
        * @throw std::invalid_argument si inputs.get_nb_col() != 1
        */
-      Matrix feed_forward(const Matrix &inputs, const Matrix &weights) const;
+      Matrix feed_forward(const Matrix &inputs) const;
 
       /**
        * @brief Accesseur des poids de la couche courante.

@@ -45,17 +45,17 @@ namespace jipks::mlp {
       this->_biases(i, 1) = rng(0, 1);
   }
 
-  Matrix Layer::feed_forward(const Matrix &inputs, const Matrix &weights) const {
-    if (weights.get_nb_line() != this->_biases.get_nb_line())
+  Matrix Layer::feed_forward(const Matrix &inputs) const {
+    if (this->_weights.get_nb_line() != this->_biases.get_nb_line())
       throw std::invalid_argument("Layer input format incorrect, weights.line != _biases.line.");
 
-    if (weights.get_nb_col() != inputs.get_nb_line())
+    if (this->_weights.get_nb_col() != inputs.get_nb_line())
       throw std::invalid_argument("Layer input format incorrect, weights.col != inputs.line.");
 
     if (inputs.get_nb_col() != 1)
       throw std::invalid_argument("Layer input format incorrect, inputs.col != 1.");
 
-    return f_matrix(weights * inputs + this->_biases);
+    return f_matrix(this->_weights * inputs + this->_biases);
   }
 
   Matrix Layer::get_weights() const {
