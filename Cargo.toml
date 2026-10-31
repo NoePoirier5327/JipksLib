@@ -1,13 +1,17 @@
-[package]
-name = "jipks"
+[workspace]
+members = [
+  "jipks_core",
+  "jipks_lua",
+  "jipks"
+]
+resolver = "2"
+
+[workspace.package]
 version = "0.1.0"
-edition = "2024"
+edition = "2021"
+authors = ["Noé Poirier"]
 
 [profile.release]
 opt-level = 3
 lto = true
 codegen-units = 1
-
-[dependencies]
-rand = "0.10.3"
-pokin = {path = "../pokin/"}

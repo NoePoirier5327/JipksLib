@@ -44,9 +44,21 @@ dependencies = [
 name = "jipks"
 version = "0.1.0"
 dependencies = [
+ "jipks_core",
+ "jipks_lua",
+]
+
+[[package]]
+name = "jipks_core"
+version = "0.1.0"
+dependencies = [
  "pokin",
  "rand",
 ]
+
+[[package]]
+name = "jipks_lua"
+version = "0.1.0"
 
 [[package]]
 name = "libc"
@@ -56,6 +68,13 @@ checksum = "65cd87c9a6d60536580b316ad985726104730a5151c99845f2490428ef91240a"
 
 [[package]]
 name = "pokin"
+version = "0.1.0"
+dependencies = [
+ "pokin_core",
+]
+
+[[package]]
+name = "pokin_core"
 version = "0.1.0"
 
 [[package]]

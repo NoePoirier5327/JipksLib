@@ -1,0 +1,13 @@
+[package]
+name = "jipks"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+
+[features]
+default = []
+lua = ["dep:jipks_lua"]
+
+[dependencies]
+jipks_core = { path = "../jipks_core/" }
+jipks_lua = { path = "../jipks_lua/", optional = true }
